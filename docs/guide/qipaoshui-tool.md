@@ -14,18 +14,19 @@
 
 👉 **[前往 Releases 页面下载最新版](https://github.com/QipaoshuiGate/qipaoshui-tool/releases/latest)**（此链接始终指向最新版本）
 
-也可以直接用下面的加速直链，当前版本 **v0.1.1**：
+也可以直接用下面的加速直链，同样始终指向最新版本：
 
 | 系统 | 架构 | 下载链接 | 安装方式 |
 | :--- | :---: | :--- | :--- |
-| Windows | x64 | [qipaoshui-tool_x64-setup.exe](https://v4.gh-proxy.org/https://github.com/QipaoshuiGate/qipaoshui-tool/releases/download/v0.1.1/qipaoshui-tool_0.1.1_x64-setup.exe) | 双击安装 |
-| Windows | x64（MSI） | [qipaoshui-tool_x64_en-US.msi](https://v4.gh-proxy.org/https://github.com/QipaoshuiGate/qipaoshui-tool/releases/download/v0.1.1/qipaoshui-tool_0.1.1_x64_en-US.msi) | 双击安装 |
-| macOS | Apple Silicon (M1/M2/M3/M4) | [qipaoshui-tool_aarch64.dmg](https://v4.gh-proxy.org/https://github.com/QipaoshuiGate/qipaoshui-tool/releases/download/v0.1.1/qipaoshui-tool_0.1.1_aarch64.dmg) | 拖入「应用程序」 |
-| macOS | Intel | [qipaoshui-tool_x64.dmg](https://v4.gh-proxy.org/https://github.com/QipaoshuiGate/qipaoshui-tool/releases/download/v0.1.1/qipaoshui-tool_0.1.1_x64.dmg) | 拖入「应用程序」 |
-| Linux | x64 | [.deb](https://v4.gh-proxy.org/https://github.com/QipaoshuiGate/qipaoshui-tool/releases/download/v0.1.1/qipaoshui-tool_0.1.1_amd64.deb) · [.rpm](https://v4.gh-proxy.org/https://github.com/QipaoshuiGate/qipaoshui-tool/releases/download/v0.1.1/qipaoshui-tool-0.1.1-1.x86_64.rpm) · [.AppImage](https://v4.gh-proxy.org/https://github.com/QipaoshuiGate/qipaoshui-tool/releases/download/v0.1.1/qipaoshui-tool_0.1.1_amd64.AppImage) | 按包管理器安装 |
+| Windows | x64 | [qipaoshui-tool-windows-x64-setup.exe](https://v4.gh-proxy.org/https://github.com/QipaoshuiGate/qipaoshui-tool/releases/latest/download/qipaoshui-tool-windows-x64-setup.exe) | 双击安装 |
+| Windows | x64（MSI） | [qipaoshui-tool-windows-x64.msi](https://v4.gh-proxy.org/https://github.com/QipaoshuiGate/qipaoshui-tool/releases/latest/download/qipaoshui-tool-windows-x64.msi) | 双击安装 |
+| macOS | Apple Silicon (M1/M2/M3/M4) | [qipaoshui-tool-macos-aarch64.dmg](https://v4.gh-proxy.org/https://github.com/QipaoshuiGate/qipaoshui-tool/releases/latest/download/qipaoshui-tool-macos-aarch64.dmg) | 拖入「应用程序」 |
+| macOS | Intel | [qipaoshui-tool-macos-x64.dmg](https://v4.gh-proxy.org/https://github.com/QipaoshuiGate/qipaoshui-tool/releases/latest/download/qipaoshui-tool-macos-x64.dmg) | 拖入「应用程序」 |
+| Linux | x64 | [.deb](https://v4.gh-proxy.org/https://github.com/QipaoshuiGate/qipaoshui-tool/releases/latest/download/qipaoshui-tool-linux-amd64.deb) · [.rpm](https://v4.gh-proxy.org/https://github.com/QipaoshuiGate/qipaoshui-tool/releases/latest/download/qipaoshui-tool-linux-x86_64.rpm) · [.AppImage](https://v4.gh-proxy.org/https://github.com/QipaoshuiGate/qipaoshui-tool/releases/latest/download/qipaoshui-tool-linux-amd64.AppImage) | 按包管理器安装 |
 
 ::: tip
-表格中的直链固定指向 v0.1.1。发布新版本后直链不会自动更新，请以上方的 [Releases 页面](https://github.com/QipaoshuiGate/qipaoshui-tool/releases/latest) 为准。
+表格里的文件名不带版本号，每次发布新版本时都会指向最新的安装包，链接本身无需更新，可以放心收藏。
+如需下载特定历史版本，请到 [Releases 页面](https://github.com/QipaoshuiGate/qipaoshui-tool/releases) 选择带版本号的文件。
 :::
 
 ### macOS 首次打开提示「无法验证开发者」
@@ -123,7 +124,11 @@ name = "Qipaoshui"
 base_url = "https://qipaoshui.buzz/v1"
 wire_api = "responses"
 experimental_bearer_token = "sk-..."
+requires_openai_auth = false
+http_headers = { x-openai-actor-authorization = "local-image-extension" }
 ```
+
+其中最后两项是 GPT 5.6 系列模型生图所需的参数，客户端会自动写入，无需手动添加。
 
 写入 `~/.claude/settings.json` 的内容形如：
 
@@ -166,9 +171,9 @@ experimental_bearer_token = "sk-..."
 
 ### 用 GPT 5.6 系列模型生图失败
 
-客户端写入的配置不含生图所需的两项参数，需要手动补进 `~/.codex/config.toml` 的 `[model_providers.qipaoshui]` 配置段，详见 [常见问题 · GPT 5.6 生图失败](/guide/faq#gpt-5-6-系列模型对话时生图失败)。
+自 **v0.1.1** 起，客户端会自动把生图所需的 `requires_openai_auth` 与 `http_headers` 两项写入 `[model_providers.qipaoshui]` 配置段，无需手动添加。
 
-注意每次重新点「应用 qipaoshui」都会重建该配置段，补的内容会被覆盖。
+如果仍然失败，请先确认用的是最新版客户端，再点一次「应用 qipaoshui」重写配置，然后完全重启 Codex。手动配置的参数说明见 [常见问题 · GPT 5.6 生图失败](/guide/faq#gpt-5-6-系列模型对话时生图失败)。
 
 ### 状态卡片显示「未知状态」
 
