@@ -1,6 +1,9 @@
 {
   "name": "qipaoshui-docs",
   "compatibility_date": "2025-09-01",
+  // 只通过自定义域 docs.qipaoshui.buzz 提供服务；
+  // *.workers.dev 在部分地区被屏蔽，会出现 SSL 告警
+  "workers_dev": false,
   "assets": {
     "directory": "./docs/.vitepress/dist",
     "html_handling": "auto-trailing-slash",
