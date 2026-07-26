@@ -2,23 +2,30 @@
 
 **气泡水客户端**（qipaoshui-tool）是官方桌面应用。登录账号、创建 API Key、把本机的 **Codex** 和 **Claude Code** 接入气泡水，全部在一个窗口里完成，随时可以一键恢复官方配置。
 
-::: tip 我该用哪个？
-- 用 **Codex**（命令行或桌面应用）、**Claude Code** → 用本页的气泡水客户端。Codex 桌面应用与命令行共用 `~/.codex/config.toml`，客户端写入后两者同时生效。
-- 用 **ChatGPT 桌面应用** → 走 [CC Switch 的三步教程](/guide/getting-started)。
+::: tip 都推荐用气泡水客户端
+无论你用 **Codex**（命令行或桌面应用）、**Claude Code**，还是 **ChatGPT 桌面应用**，都推荐用本页的气泡水客户端接入：登录账号后一键写好配置，不必手动复制粘贴。
+
+其中 Codex 桌面应用与命令行共用 `~/.codex/config.toml`，客户端写入一次，两者同时生效。
+
+如果你更习惯手动导入，也可以参考 [CC Switch 的三步教程](/guide/getting-started)。
 :::
 
 ## 一、下载安装
 
+👉 **[前往 Releases 页面下载最新版](https://github.com/QipaoshuiGate/qipaoshui-tool/releases/latest)**（此链接始终指向最新版本）
+
+也可以直接用下面的加速直链，当前版本 **v0.1.1**：
+
 | 系统 | 架构 | 下载链接 | 安装方式 |
 | :--- | :---: | :--- | :--- |
-| Windows | x64 | [qipaoshui-tool_x64-setup.exe](https://v4.gh-proxy.org/https://github.com/QipaoshuiGate/qipaoshui-tool/releases/download/v0.1.0/qipaoshui-tool_0.1.0_x64-setup.exe) | 双击安装 |
-| Windows | x64（MSI） | [qipaoshui-tool_x64_en-US.msi](https://v4.gh-proxy.org/https://github.com/QipaoshuiGate/qipaoshui-tool/releases/download/v0.1.0/qipaoshui-tool_0.1.0_x64_en-US.msi) | 双击安装 |
-| macOS | Apple Silicon (M1/M2/M3/M4) | [qipaoshui-tool_aarch64.dmg](https://v4.gh-proxy.org/https://github.com/QipaoshuiGate/qipaoshui-tool/releases/download/v0.1.0/qipaoshui-tool_0.1.0_aarch64.dmg) | 拖入「应用程序」 |
-| macOS | Intel | [qipaoshui-tool_x64.dmg](https://v4.gh-proxy.org/https://github.com/QipaoshuiGate/qipaoshui-tool/releases/download/v0.1.0/qipaoshui-tool_0.1.0_x64.dmg) | 拖入「应用程序」 |
-| Linux | x64 | [.deb](https://v4.gh-proxy.org/https://github.com/QipaoshuiGate/qipaoshui-tool/releases/download/v0.1.0/qipaoshui-tool_0.1.0_amd64.deb) · [.rpm](https://v4.gh-proxy.org/https://github.com/QipaoshuiGate/qipaoshui-tool/releases/download/v0.1.0/qipaoshui-tool-0.1.0-1.x86_64.rpm) · [.AppImage](https://v4.gh-proxy.org/https://github.com/QipaoshuiGate/qipaoshui-tool/releases/download/v0.1.0/qipaoshui-tool_0.1.0_amd64.AppImage) | 按包管理器安装 |
+| Windows | x64 | [qipaoshui-tool_x64-setup.exe](https://v4.gh-proxy.org/https://github.com/QipaoshuiGate/qipaoshui-tool/releases/download/v0.1.1/qipaoshui-tool_0.1.1_x64-setup.exe) | 双击安装 |
+| Windows | x64（MSI） | [qipaoshui-tool_x64_en-US.msi](https://v4.gh-proxy.org/https://github.com/QipaoshuiGate/qipaoshui-tool/releases/download/v0.1.1/qipaoshui-tool_0.1.1_x64_en-US.msi) | 双击安装 |
+| macOS | Apple Silicon (M1/M2/M3/M4) | [qipaoshui-tool_aarch64.dmg](https://v4.gh-proxy.org/https://github.com/QipaoshuiGate/qipaoshui-tool/releases/download/v0.1.1/qipaoshui-tool_0.1.1_aarch64.dmg) | 拖入「应用程序」 |
+| macOS | Intel | [qipaoshui-tool_x64.dmg](https://v4.gh-proxy.org/https://github.com/QipaoshuiGate/qipaoshui-tool/releases/download/v0.1.1/qipaoshui-tool_0.1.1_x64.dmg) | 拖入「应用程序」 |
+| Linux | x64 | [.deb](https://v4.gh-proxy.org/https://github.com/QipaoshuiGate/qipaoshui-tool/releases/download/v0.1.1/qipaoshui-tool_0.1.1_amd64.deb) · [.rpm](https://v4.gh-proxy.org/https://github.com/QipaoshuiGate/qipaoshui-tool/releases/download/v0.1.1/qipaoshui-tool-0.1.1-1.x86_64.rpm) · [.AppImage](https://v4.gh-proxy.org/https://github.com/QipaoshuiGate/qipaoshui-tool/releases/download/v0.1.1/qipaoshui-tool_0.1.1_amd64.AppImage) | 按包管理器安装 |
 
 ::: tip
-以上为 v0.1.0，如需其他版本请前往 [qipaoshui-tool Releases](https://github.com/QipaoshuiGate/qipaoshui-tool/releases/latest) 下载。
+表格中的直链固定指向 v0.1.1。发布新版本后直链不会自动更新，请以上方的 [Releases 页面](https://github.com/QipaoshuiGate/qipaoshui-tool/releases/latest) 为准。
 :::
 
 ### macOS 首次打开提示「无法验证开发者」
