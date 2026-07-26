@@ -3,7 +3,7 @@
 **气泡水客户端**（qipaoshui-tool）是官方桌面应用。登录账号、创建 API Key、把本机的 **Codex** 和 **Claude Code** 接入气泡水，全部在一个窗口里完成，随时可以一键恢复官方配置。
 
 ::: tip 我该用哪个？
-- 用 **Codex / Claude Code 命令行** → 用本页的气泡水客户端，它直接改写这两个 CLI 的配置文件。
+- 用 **Codex**（命令行或桌面应用）、**Claude Code** → 用本页的气泡水客户端。Codex 桌面应用与命令行共用 `~/.codex/config.toml`，客户端写入后两者同时生效。
 - 用 **ChatGPT 桌面应用** → 走 [CC Switch 的三步教程](/guide/getting-started)。
 :::
 
@@ -88,8 +88,11 @@ xattr -cr /Applications/qipaoshui-tool.app
 
 点「**应用 qipaoshui**」，提示「已切换到 qipaoshui」即写入成功，两张状态卡片会变成绿色。
 
-::: warning 需要重开 CLI
-Codex 和 Claude Code 只在启动时读取配置文件。请关掉正在运行的会话，**新开一个终端**再使用。
+::: warning 需要重开客户端
+Codex 和 Claude Code 只在启动时读取配置文件：
+
+- **命令行**：结束正在运行的会话，新开一个终端；
+- **Codex 桌面应用**：完全退出后重新打开（macOS 需在程序坞上右键「退出」，仅关闭窗口无效）。
 :::
 
 想换 Key 或换模型时，改完表单再点一次「应用 qipaoshui」即可，不需要先恢复。
@@ -150,9 +153,9 @@ experimental_bearer_token = "sk-..."
 
 还没有创建 Key。点提示右侧的「去创建 →」，或从侧边栏进入「API Keys」页面新建一个。
 
-### 应用之后 CLI 还是走官方服务
+### 应用之后还是走官方服务
 
-配置只在启动时读取。请完全退出 Codex / Claude Code，新开终端窗口后再试。
+配置只在启动时读取。命令行请新开一个终端窗口，Codex 桌面应用请完全退出后重新打开，再试一次。
 
 ### 状态卡片显示「未知状态」
 
