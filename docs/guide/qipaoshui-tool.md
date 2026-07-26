@@ -164,6 +164,12 @@ experimental_bearer_token = "sk-..."
 
 配置只在启动时读取。命令行请新开一个终端窗口，Codex 桌面应用请完全退出后重新打开，再试一次。
 
+### 用 GPT 5.6 系列模型生图失败
+
+客户端写入的配置不含生图所需的两项参数，需要手动补进 `~/.codex/config.toml` 的 `[model_providers.qipaoshui]` 配置段，详见 [常见问题 · GPT 5.6 生图失败](/guide/faq#gpt-5-6-系列模型对话时生图失败)。
+
+注意每次重新点「应用 qipaoshui」都会重建该配置段，补的内容会被覆盖。
+
 ### 状态卡片显示「未知状态」
 
 表示 `~/.codex/config.toml` 为空或不存在，即本机还没有任何 Codex 配置。点「应用 qipaoshui」会自动创建。

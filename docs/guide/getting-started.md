@@ -12,9 +12,9 @@
 
 | 系统 | 架构 | 下载链接 | 安装方式 |
 | :--- | :---: | :--- | :--- |
-| Windows | x64 | [CC-Setup.exe](https://v4.gh-proxy.org/https://github.com/farion1231/cc-switch/releases/download/v3.18.0/CC-Switch-v3.18.0-Windows-arm64.msi) | 双击安装 |
-| macOS | Apple Silicon (M1/M2/M3/M4) | [CC_aarch64.dmg](https://v4.gh-proxy.org/https://github.com/farion1231/cc-switch/releases/download/v3.18.0/CC-Switch-v3.18.0-macOS.dmg) | 拖入「应用程序」 |
-| macOS | Intel | [CC_x64.dmg](https://v4.gh-proxy.org/https://github.com/farion1231/cc-switch/releases/download/v3.18.0/CC-Switch-v3.18.0-macOS.dmg) | 拖入「应用程序」 |
+| Windows | x64 | [CC-Switch-Windows.msi](https://v4.gh-proxy.org/https://github.com/farion1231/cc-switch/releases/download/v3.18.0/CC-Switch-v3.18.0-Windows.msi) | 双击安装 |
+| Windows | arm64 | [CC-Switch-Windows-arm64.msi](https://v4.gh-proxy.org/https://github.com/farion1231/cc-switch/releases/download/v3.18.0/CC-Switch-v3.18.0-Windows-arm64.msi) | 双击安装 |
+| macOS | Intel / Apple Silicon 通用 | [CC-Switch-macOS.dmg](https://v4.gh-proxy.org/https://github.com/farion1231/cc-switch/releases/download/v3.18.0/CC-Switch-v3.18.0-macOS.dmg) | 拖入「应用程序」 |
 
 ::: tip
 如需其他版本请前往 [CC Switch Releases](https://github.com/farion1231/cc-switch/releases/latest) 下载。

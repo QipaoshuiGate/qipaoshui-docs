@@ -2,19 +2,46 @@
 
 ## GPT 5.6 系列模型对话时生图失败
 
-部分用户通过平台将 API Key 一键导入 CC Switch 后，图片相关请求异常。
-
-**解决方法：**
-
-1. 打开 CC Switch，切换到 Codex
-2. 找到导入的服务商，点击「编辑」
-3. 在 `config.toml` 配置编辑区域，找到 `[model_providers.custom]` 配置段
-4. 加入以下两行：
+图片相关请求异常时，需要给 Codex 的服务商配置补两行：
 
 ```toml
 requires_openai_auth = false
 http_headers = { "x-openai-actor-authorization" = "local-image-extension" }
 ```
+
+补在哪个配置段，取决于你是怎么接入的。
+
+### 用气泡水客户端接入
+
+客户端写入的配置段叫 `[model_providers.qipaoshui]`。直接编辑 `~/.codex/config.toml`，把两行加进去：
+
+```toml
+model = "gpt-5.6-sol"
+model_provider = "qipaoshui"
+
+[model_providers.qipaoshui]
+name = "Qipaoshui"
+base_url = "https://qipaoshui.buzz/v1"
+wire_api = "responses"
+experimental_bearer_token = "sk-..."
+requires_openai_auth = false
+http_headers = { "x-openai-actor-authorization" = "local-image-extension" }
+```
+
+保存后重开终端；Codex 桌面应用需完全退出后重新打开。
+
+::: warning 再次点「应用 qipaoshui」会覆盖掉
+客户端每次应用配置时都会重建整个 `[model_providers.qipaoshui]` 配置段，你手动加的这两行会被清掉。换 Key、换模型后重新应用过，请回来再补一次。
+:::
+
+### 用 CC Switch 接入
+
+CC Switch 写入的配置段叫 `[model_providers.custom]`：
+
+1. 打开 CC Switch，切换到 Codex
+2. 找到导入的服务商，点击「编辑」
+3. 在 `config.toml` 配置编辑区域找到 `[model_providers.custom]` 配置段
+4. 加入上面那两行
 
 **完整配置示例：**
 
@@ -34,7 +61,7 @@ http_headers = { "x-openai-actor-authorization" = "local-image-extension" }
 保存配置后，在 CC Switch 中重新启用或切换一次该服务商，并重启 Codex。
 
 ::: warning 注意事项
-- 这两行必须放在 `[model_providers.custom]` 下，不能写在配置文件顶层
+- 这两行必须放在服务商的配置段下（`[model_providers.xxx]`），不能写在配置文件顶层
 - 如果重新导入 API Key、删除后重新创建服务商，或 CC Switch 重新生成了配置，请再次检查这两项是否仍然存在
 :::
 
