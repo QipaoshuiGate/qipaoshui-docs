@@ -2,6 +2,10 @@
 
 三步即可开始使用气泡水 AI 服务。
 
+::: tip 使用 Codex 或 Claude Code 命令行？
+推荐改用官方桌面应用 [气泡水客户端](/guide/qipaoshui-tool)，登录后一键完成配置，无需手动导入。
+:::
+
 ## 一、下载 CC Switch
 
 根据你的系统选择对应版本：

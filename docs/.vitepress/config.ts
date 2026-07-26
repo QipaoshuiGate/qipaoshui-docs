@@ -12,6 +12,7 @@ export default defineConfig({
   themeConfig: {
     nav: [
       { text: '开始使用', link: '/guide/getting-started' },
+      { text: '气泡水客户端', link: '/guide/qipaoshui-tool' },
       { text: '使用指南', link: '/guide/usage' },
       { text: '常见问题', link: '/guide/faq' },
     ],
@@ -20,6 +21,7 @@ export default defineConfig({
         text: '教程',
         items: [
           { text: '开始使用', link: '/guide/getting-started' },
+          { text: '气泡水客户端', link: '/guide/qipaoshui-tool' },
           { text: '使用指南', link: '/guide/usage' },
           { text: '常见问题', link: '/guide/faq' },
         ],

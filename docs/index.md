@@ -16,6 +16,10 @@ hero:
 features:
   - title: 三步上手
     details: 下载 CC Switch → 创建 API Key → 导入即可使用，无需复杂配置。
+  - title: 官方桌面客户端
+    details: 用气泡水客户端一键把本机 Codex 与 Claude Code 接入气泡水，随时恢复官方配置。
+    link: /guide/qipaoshui-tool
+    linkText: 查看教程
   - title: 多模型支持
     details: 支持 GPT 系列、Claude、Gemini 等主流 AI 模型，一键切换。
   - title: 稳定可靠
