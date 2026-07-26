@@ -1,0 +1,41 @@
+name: 部署文档
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# 同一分支的连续推送只保留最后一次部署
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+
+      # 版本取自 package.json 的 packageManager 字段
+      - name: 安装 pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: 安装 Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      # 复用 build.sh：安装依赖 -> 构建 VitePress -> 校验产物存在
+      - name: 构建
+        run: ./build.sh
+
+      - name: 部署到 Cloudflare Workers
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: deploy
